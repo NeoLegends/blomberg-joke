@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>Diss hochladen</title>
+    <style>
+        * {
+            font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
+        }
+
+        .all-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            height: 100vh;
+        }
+
+        .spacer {
+            height: 4rem;
+        }
+
+        .loader-container {
+            display: none;
+            align-items: center;
+            flex-flow: column;
+            padding: 4rem;
+        }
+
+        .loading .loader-container {
+            display: flex;
+        }
+
+        .header-container {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .loading .header-container {
+            display: none;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        h2 {
+            background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .loading .form-container {
+            display: none;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        input {
+            font-size: 24px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            font-size: 24px;
+            padding: .5rem;
+        }
+
+        #yay {
+            background: green;
+            color: white;
+        }
+
+        #nay {
+            background: red;
+            color: white;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                document.body.classList.remove("loading");
+            }, 2000);
+
+            const yay = document.getElementById("yay");
+            const nay = document.getElementById("nay");
+            const form = document.getElementById("form");
+
+            form.addEventListener("submit", ev => {
+                ev.preventDefault();
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div class="all-container">
+        <div class="loader-container">
+            <img class="loader" src="https://gifcities.org/assets/loading1.gif">
+        </div>
+
+        <div class="header-container">
+            <div class="row">
+                <img
+                    src="https://web.archive.org/web/20090726030345/http://www.geocities.com/babybackdollar/earthspin.gif">
+                <h1>Uni Göttingen</h1>
+                <img
+                    src="https://web.archive.org/web/20090726030345/http://www.geocities.com/babybackdollar/earthspin.gif">
+            </div>
+            <img
+                src="https://web.archive.org/web/20090820091244/http://geocities.com/allamaiqbalopenuniversity/finalthesis.gif">
+            <h2>Diss-Abgebeportal</h2>
+        </div>
+        <div class="form-container">
+            <form id="form" action="" method="post">
+                <input type="file" name="file">
+                <button id="yay" type="submit">Diss abgeben</button>
+                <button id="nay">Schwanz einziehen</button>
+            </form>
+        </div>
+
+        <div class="spacer" />
+    </div>
+</body>
+
+</html>
