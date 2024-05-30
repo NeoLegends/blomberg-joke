@@ -37,7 +37,9 @@
             margin-bottom: 2rem;
         }
 
-        .loading .header-container {
+        .loading .header-container,
+        .loading .form-container,
+        .loading .bierchen-container {
             display: none;
         }
 
@@ -50,10 +52,6 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .loading .form-container {
-            display: none;
         }
 
         .row {
@@ -76,18 +74,30 @@
         button {
             border: none;
             border-radius: 12px;
+            color: white;
+            cursor: pointer;
             font-size: 24px;
             padding: .5rem;
         }
 
         #yay {
             background: green;
-            color: white;
+            box-shadow: 10px 5px 5px green;
+        }
+
+        #yay:hover {
+            box-shadow: 0 0 5px green;
+            transform: translateX(10px) translateY(5px);
         }
 
         #nay {
             background: red;
-            color: white;
+            box-shadow: 10px 5px 5px red;
+        }
+
+        #nay:hover {
+            box-shadow: 0 0 5px red;
+            transform: translateX(10px) translateY(5px);
         }
     </style>
     <script>
@@ -102,6 +112,16 @@
 
             form.addEventListener("submit", ev => {
                 ev.preventDefault();
+
+                console.log("submitted", ev.submitter === yay, ev.submitter === nay);
+
+                if (ev.submitter === yay) {
+
+                } else if (ev.submitter === nay) {
+
+                } else {
+                    console.log("wtf")
+                }
             });
         })
     </script>
@@ -111,6 +131,10 @@
     <div class="all-container">
         <div class="loader-container">
             <img class="loader" src="https://gifcities.org/assets/loading1.gif">
+        </div>
+
+        <div class="bierchen-container">
+            <img class="bierchen" src="bierchen.jpeg">
         </div>
 
         <div class="header-container">
@@ -127,9 +151,9 @@
         </div>
         <div class="form-container">
             <form id="form" action="" method="post">
-                <input type="file" name="file">
+                <input type="file" name="file" required>
                 <button id="yay" type="submit">Diss abgeben</button>
-                <button id="nay">Schwanz einziehen</button>
+                <button id="nay" type="submit">Schwanz einziehen</button>
             </form>
         </div>
 
