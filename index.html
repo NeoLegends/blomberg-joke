@@ -30,17 +30,50 @@
             display: flex;
         }
 
+        .loading .header-container,
+        .loading .form-container,
+        .bierchen .header-container,
+        .bierchen .form-container,
+        .explosion .header-container,
+        .explosion .form-container,
+        .firework .header-container,
+        .firework .form-container {
+            display: none;
+        }
+
+        .bierchen-container {
+            display: none;
+        }
+
+        .bierchen-container img {
+            height: 100vh;
+        }
+
+        .bierchen .bierchen-container {
+            display: flex;
+        }
+
+        .explosion-container {
+            display: none;
+        }
+
+        .explosion .explosion-container {
+            display: flex;
+        }
+
+        .firework-container {
+            display: none;
+        }
+
+        .firework .firework-container {
+            display: flex;
+        }
+
         .header-container {
             display: flex;
             flex-flow: column;
             align-items: center;
             margin-bottom: 2rem;
-        }
-
-        .loading .header-container,
-        .loading .form-container,
-        .loading .bierchen-container {
-            display: none;
         }
 
         h1 {
@@ -60,6 +93,7 @@
             gap: 1rem;
         }
 
+        .form-container,
         form {
             display: flex;
             flex-flow: column;
@@ -101,6 +135,15 @@
         }
     </style>
     <script>
+        const bierchen = (className) => () => {
+            document.body.classList.remove(className);
+            document.body.classList.add("bierchen");
+
+            const a = new Audio("ring.mp3");
+            a.loop = true;
+            a.play();
+        };
+
         window.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 document.body.classList.remove("loading");
@@ -110,19 +153,20 @@
             const nay = document.getElementById("nay");
             const form = document.getElementById("form");
 
-            form.addEventListener("submit", ev => {
+            const handler = (className) => ev => {
                 ev.preventDefault();
+                document.body.classList.add("loading");
 
-                console.log("submitted", ev.submitter === yay, ev.submitter === nay);
+                setTimeout(() => {
+                    document.body.classList.remove("loading");
+                    document.body.classList.add(className);
 
-                if (ev.submitter === yay) {
+                    setTimeout(bierchen(className), 5000);
+                }, 1000);
+            };
 
-                } else if (ev.submitter === nay) {
-
-                } else {
-                    console.log("wtf")
-                }
-            });
+            nay.addEventListener("click", handler("explosion"))
+            form.addEventListener("submit", handler("firework"));
         })
     </script>
 </head>
@@ -132,9 +176,17 @@
         <div class="loader-container">
             <img class="loader" src="https://gifcities.org/assets/loading1.gif">
         </div>
-
         <div class="bierchen-container">
             <img class="bierchen" src="bierchen.jpeg">
+        </div>
+        <div class="explosion-container">
+            <img
+                src="https://web.archive.org/web/20090728090926/http://de.geocities.com/bomba_bar2003/Images/Bomba_Bomb/Pic_Bomb_LunteBrennt.gif">
+            <img src="https://web.archive.org/web/20090829032420/http://geocities.com/raheel_ruhail/bombz.gif">
+        </div>
+        <div class="firework-container">
+            <img
+                src="https://web.archive.org/web/20090831045222/http://www.geocities.com/old_jp_2000/go/A_fireworkbckgrnd.gif">
         </div>
 
         <div class="header-container">
@@ -147,14 +199,14 @@
             </div>
             <img
                 src="https://web.archive.org/web/20090820091244/http://geocities.com/allamaiqbalopenuniversity/finalthesis.gif">
-            <h2>Diss-Abgebeportal</h2>
+            <h2>Diss-Abgabeportal</h2>
         </div>
         <div class="form-container">
             <form id="form" action="" method="post">
                 <input type="file" name="file" required>
                 <button id="yay" type="submit">Diss abgeben</button>
-                <button id="nay" type="submit">Schwanz einziehen</button>
             </form>
+            <button id="nay" type="submit">Schwanz einziehen</button>
         </div>
 
         <div class="spacer" />
