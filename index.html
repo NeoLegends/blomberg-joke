@@ -43,10 +43,11 @@
 
         .bierchen-container {
             display: none;
+            flex-flow: column;
         }
 
-        .bierchen-container img {
-            height: 100vh;
+        .bierchen-container .bierchen {
+            height: 70vh;
         }
 
         .bierchen .bierchen-container {
@@ -55,6 +56,7 @@
 
         .explosion-container {
             display: none;
+            flex-flow: row wrap;
         }
 
         .explosion .explosion-container {
@@ -63,6 +65,11 @@
 
         .firework-container {
             display: none;
+            flex-flow: row wrap;
+        }
+
+        .firework-container img.small {
+            height: 10vh;
         }
 
         .firework .firework-container {
@@ -171,13 +178,14 @@
     </script>
 </head>
 
-<body>
+<body class="firework">
     <div class="all-container">
         <div class="loader-container">
             <img class="loader" src="https://gifcities.org/assets/loading1.gif">
         </div>
         <div class="bierchen-container">
             <img class="bierchen" src="bierchen.jpeg">
+            <img src="https://web.archive.org/web/20091019113419/http://www.geocities.com/d3moniq/nurple-beer.gif">
         </div>
         <div class="explosion-container">
             <img
@@ -185,8 +193,14 @@
             <img src="https://web.archive.org/web/20090829032420/http://geocities.com/raheel_ruhail/bombz.gif">
         </div>
         <div class="firework-container">
+            <img class="small"
+                src="https://web.archive.org/web/20090820061405/http://geocities.com/buzzbombgarage@sbcglobal.net/checkeredflagleft.gif">
+            <img class="small"
+                src="https://web.archive.org/web/20091027083354/http://geocities.com/buzzbombgarage@sbcglobal.net/checkeredflagright.gif">
             <img
                 src="https://web.archive.org/web/20090831045222/http://www.geocities.com/old_jp_2000/go/A_fireworkbckgrnd.gif">
+            <img
+                src="https://web.archive.org/web/20090822010758/http://geocities.com/Wellesley/Garden/2880/fireworkbar.gif">
         </div>
 
         <div class="header-container">
@@ -200,6 +214,7 @@
             <img
                 src="https://web.archive.org/web/20090820091244/http://geocities.com/allamaiqbalopenuniversity/finalthesis.gif">
             <h2>Diss-Abgabeportal</h2>
+            <marquee>+++ !!! JETZT ABGEBEN !!! +++</marquee>
         </div>
         <div class="form-container">
             <form id="form" action="" method="post">
